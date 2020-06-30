@@ -11,24 +11,24 @@ public class Deck {
     public void init() {
         deckIndex = 0;
         this.cards= new ArrayList<Card>();
-        Suit suit = Suit.Hearts;
         List<Integer> numberList = new ArrayList<Integer>();
-        for (int i=1; i<=52; i++) {
+        for (int i=1; i<=13; i++) {
             numberList.add(new Integer(i));
         }
-        Collections.shuffle(numberList);
-        for (Integer i : numberList) {
-            Card card = new Card();
-            if (i % 11 == 0) {
-                card.setAce(true);
-                card.setAlternateNumber(1);
-                suit = Suit.values()[(suit.ordinal() +1)];
+        for(Suit suit: Suit.values()) {
+            for (Integer i : numberList) {
+                Card card = new Card();
+                if (i == 1) {
+                    card.setAce(true);
+                    card.setAlternateNumber(1);
+                }
+                card.setAlternateNumber(i);
+                card.setAce(false);
+                card.setSuit(suit);
+                cards.add(card);
             }
-            card.setAlternateNumber(i);
-            card.setAce(false);
-            card.setSuit(suit);
-            cards.add(card);
-        }
+        }        
+        Collections.shuffle(cards);
     }
     public Card draw() {
         return cards.get(deckIndex++);
