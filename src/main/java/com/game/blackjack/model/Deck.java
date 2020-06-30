@@ -20,9 +20,9 @@ public class Deck {
                 Card card = new Card();
                 if (i == 1) {
                     card.setAce(true);
-                    card.setAlternateNumber(1);
+                    card.setAlternateNumber(11);
                 }
-                card.setAlternateNumber(i);
+                card.setNumber(i);
                 card.setAce(false);
                 card.setSuit(suit);
                 cards.add(card);
